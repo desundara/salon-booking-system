@@ -11,7 +11,7 @@ export default async function MyBookingsPage() {
     }
 
     const bookings = await prisma.booking.findMany({
-        where: { userId: session.user.id },
+        where: { userId: session.user?.id as string },
         include: {
         service: { select: { name: true, price: true, duration: true } }
         },
